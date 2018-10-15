@@ -87,7 +87,16 @@ Promises:
 */
 void UserApp1Initialize(void)
 {
- 
+LedOff(WHITE);
+LedOff(PURPLE);
+LedOff(BLUE);
+LedOff(CYAN);
+LedOff(GREEN);
+LedOff(YELLOW);
+LedOff(ORANGE);
+LedOff(RED);
+
+
   /* If good initialization, set state to Idle */
   if( 1 )
   {
@@ -118,7 +127,59 @@ Promises:
 */
 void UserApp1RunActiveState(void)
 {
-  UserApp1_StateMachine();
+ UserApp1_StateMachine();
+ static u32 count ;
+ for(count=0;count<=720000;count++)
+ {
+   if(count==80000)
+   {
+     LedToggle(WHITE);
+   } 
+   if(count==160000)
+   {
+     LedToggle(WHITE);
+     LedToggle(PURPLE);
+     LedPWM(PURPLE,LED_PWM_70);
+   }
+   if(count==240000)
+   {
+     LedToggle(PURPLE);
+     LedToggle(BLUE);
+     LedPWM(BLUE,LED_PWM_50);
+   }
+   if(count==320000)
+   {
+     LedToggle(BLUE);
+     LedToggle(CYAN);
+     LedPWM(CYAN,LED_PWM_40);
+   }
+   if(count==400000)
+   {
+     LedToggle(CYAN);
+     LedToggle(GREEN);
+     LedPWM(GREEN,LED_PWM_30);
+   }
+   if(count==480000)
+   {
+     LedToggle(GREEN);
+     LedToggle(YELLOW);
+     LedPWM(YELLOW,LED_PWM_20);
+   }
+   if(count==560000)
+   {
+     LedToggle(YELLOW);
+     LedToggle(ORANGE);
+     LedPWM(ORANGE,LED_PWM_10);
+   }
+   if(count==640000)
+   {
+     LedToggle(ORANGE);
+     LedToggle(RED);
+     LedPWM(RED,LED_PWM_5);
+   }
+ }
+ LedToggle(RED);
+ count=0;
 
 } /* end UserApp1RunActiveState */
 
